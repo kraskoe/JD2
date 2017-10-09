@@ -15,10 +15,11 @@ public class CatDao {
             em = EMUtil.getEntityManager();
         }
     }
-    public void save(Cat cat) {
+    public Cat save(Cat cat) {
         em.getTransaction().begin();
         em.persist(cat);
         em.getTransaction().commit();
+        return cat;
     }
     public Cat get (Long id) {
         return em.find(Cat.class, id);

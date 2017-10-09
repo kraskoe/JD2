@@ -25,18 +25,17 @@ public class CatTest {
     }
     @Test
     public void saveTest() {
-        catDao.save(cat);
+        cat = catDao.save(cat);
     }
     @Test
     public void getTest() {
-        catDao.get(1L);
         assertTrue(catDao.get(1L).getName() == cat.getName());
     }
     @Test
     public void updateTest() {
         cat.setAge(3);
         catDao.update(cat);
-//        assertEquals(catDao.get(1L).getAge(), cat.getAge());
+        assertEquals(catDao.get(1L).getAge(), cat.getAge());
     }
     @Test
     public void deleteTest() {
