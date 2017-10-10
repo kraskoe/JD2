@@ -16,12 +16,12 @@ import static org.junit.Assert.assertTrue;
  * Created by Yauheni Krasko on 08.10.2017.
  */
 public class CatTest {
+    EntityManager em = null;
     Cat cat = new Cat(null, 2, "Murzik");
     CatDao catDao = new CatDao();
-
     @Before
     public void init() {
-        EntityManager em = EMUtil.getEntityManager();
+        em = EMUtil.getEntityManager();
     }
     @Test
     public void saveTest() {
@@ -29,18 +29,22 @@ public class CatTest {
     }
     @Test
     public void getTest() {
-        assertTrue(catDao.get(1L).getName() == cat.getName());
+        cat = catDao.save(cat);
+        assertTrue(catDao.get(cat.getId()).getName() == cat.getName());
     }
     @Test
     public void updateTest() {
+        cat = catDao.save(cat);
+//        em.detach(cat);
         cat.setAge(3);
         catDao.update(cat);
-        assertEquals(catDao.get(1L).getAge(), cat.getAge());
+        assertEquals(catDao.get(cat.getId()).getAge(), cat.getAge());
     }
     @Test
     public void deleteTest() {
-        catDao.delete(1L);
-        assertTrue(catDao.get(1L) == null);
+        cat = catDao.save(cat);
+        catDao.delete(cat.getId());
+        assertTrue(catDao.get(cat.getId()) == null);
     }
 //    @After
 //    public void close() {
