@@ -70,26 +70,11 @@
       <version>${h2.version}</version>
       <scope>test</scope>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>org.apache.logging.log4j</groupId>-->
-      <!--<artifactId>log4j-api</artifactId>-->
-      <!--<version>${log4j.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.logging.log4j</groupId>-->
-      <!--<artifactId>log4j-core</artifactId>-->
-      <!--<version>${log4j.version}</version>-->
-    <!--</dependency>-->
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.6.1</version>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>p6spy</groupId>-->
-      <!--<artifactId>p6spy</artifactId>-->
-      <!--<version>${p6spy.version}</version>-->
-    <!--</dependency>-->
   </dependencies>
 
   <build>
