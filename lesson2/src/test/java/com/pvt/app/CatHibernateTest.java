@@ -4,6 +4,7 @@ import com.pvt.app.dao.CatHibernateDao;
 import com.pvt.app.pojos.Cat;
 import com.pvt.app.util.SFUtil;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -61,8 +62,9 @@ public class CatHibernateTest extends HibernateTest {
             assertTrue(catName == null);
         }
     }
-    //!!!
+
     @Test
+    @Ignore
     public void getLoadNullTest() {
         session.getTransaction().begin();
         Cat cat = new Cat(null, 3, "Afina");
@@ -96,6 +98,14 @@ public class CatHibernateTest extends HibernateTest {
         cat = catHibDao.create(cat);
         catHibDao.delete(cat.getId());
         assertTrue(catHibDao.readGet(cat.getId()) == null);
+    }
+    @Test
+    public void isDirtyTest() {
+        Cat cat = new Cat(null, 5, "Afina");
+        cat = catHibDao.create(cat);
+        Cat loadedCat = session.get(Cat.class, cat.getId());
+        loadedCat.setAge(555);
+        System.out.println("---Is session dirty: " + session.isDirty());
     }
 
 }
