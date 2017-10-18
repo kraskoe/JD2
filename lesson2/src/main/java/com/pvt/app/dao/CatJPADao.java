@@ -35,4 +35,8 @@ public class CatJPADao {
         em.remove(tempCat);
         em.getTransaction().commit();
     }
+    public void close() {
+        em.clear();
+        em.close();
+    }
 }

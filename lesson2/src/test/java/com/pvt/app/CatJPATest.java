@@ -54,6 +54,7 @@ public class CatJPATest extends JPATest {
         cat = catJPADao.create(cat);
         catJPADao.delete(cat.getId());
         assertTrue(catJPADao.read(cat.getId()) == null);
+        catJPADao.close();
     }
 
     @Test

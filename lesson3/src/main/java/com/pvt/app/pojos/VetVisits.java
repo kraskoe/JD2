@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -13,12 +16,19 @@ import java.util.Date;
  */
 
 @Data
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
 public class VetVisits {
     @Column (updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date firstVisit;
     @Column (insertable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date lastVisit;
+
+    public VetVisits() {
+        this.firstVisit = Calendar.getInstance().getTime();
+        this.lastVisit = Calendar.getInstance().getTime();
+    }
 }
