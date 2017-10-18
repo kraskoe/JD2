@@ -3,12 +3,13 @@ package com.pvt.app.pojos;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -16,19 +17,13 @@ import java.util.Date;
  */
 
 @Data
-//@NoArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class VetVisits {
+public class VetVisit {
     @Column (updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date firstVisit;
     @Column (insertable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private Date lastVisit;
-
-    public VetVisits() {
-        this.firstVisit = Calendar.getInstance().getTime();
-        this.lastVisit = Calendar.getInstance().getTime();
-    }
 }

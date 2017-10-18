@@ -16,9 +16,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-public class Cat {
+public class Hamster {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
     @Column(updatable = false)
     private Long id;
 
@@ -29,8 +29,4 @@ public class Cat {
     @Column
     @Access(AccessType.PROPERTY)
     private String name;
-
-    @Embedded
-//    @AttributeOverrides( value = {@AttributeOverride(name = "firstVisit")})
-    private VetVisit vetVisit;
 }

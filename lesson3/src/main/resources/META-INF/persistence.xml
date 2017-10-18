@@ -6,6 +6,10 @@
     <persistence-unit name="com.pvt.app" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.pvt.app.pojos.Cat</class>
+        <class>com.pvt.app.pojos.Dog</class>
+        <class>com.pvt.app.pojos.Parrot</class>
+        <class>com.pvt.app.pojos.Hamster</class>
+        <class>com.pvt.app.pojos.WhiteRat</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
@@ -18,6 +22,7 @@
             <!--<property name="hibernate.use_sql_comments" value="true"/>-->
             <!--<property name="hibernate.show_sql" value="true"/>-->
             <property name="hibernate.connection.pool_size" value="10"/>
+            <property name="hibernate.physical_naming_strategy" value="com.pvt.app.util.CatNamingStrategy"/>
         </properties>
     </persistence-unit>
     <!--<persistence-unit name="com.pvt.app.test" transaction-type="RESOURCE_LOCAL">-->

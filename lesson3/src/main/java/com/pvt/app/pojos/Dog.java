@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by Yauheni Krasko on 08.10.2017.
@@ -16,9 +19,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-public class Cat {
+public class Dog {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     @Column(updatable = false)
     private Long id;
 
@@ -29,8 +32,6 @@ public class Cat {
     @Column
     @Access(AccessType.PROPERTY)
     private String name;
-
-    @Embedded
-//    @AttributeOverrides( value = {@AttributeOverride(name = "firstVisit")})
-    private VetVisit vetVisit;
+    @CreationTimestamp
+    private Date time;
 }

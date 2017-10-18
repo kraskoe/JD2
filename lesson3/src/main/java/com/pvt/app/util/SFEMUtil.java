@@ -1,7 +1,6 @@
 package com.pvt.app.util;
 
-import com.pvt.app.pojos.Cat;
-import com.pvt.app.pojos.VetVisits;
+import com.pvt.app.pojos.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -36,10 +35,6 @@ public class SFEMUtil {
         SessionFactory initialization
      */
     static {
-//        Configuration configuration = new Configuration();
-//        configuration.setPhysicalNamingStrategy(new CatNamingStrategy());
-//        sessionFactory = configuration.configure().buildSessionFactory();
-
         StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
 
         // Hibernate settings equivalent to hibernate.cfg.xml's properties
@@ -48,9 +43,10 @@ public class SFEMUtil {
         settings.put(Environment.URL, "jdbc:mysql://localhost:3306/jpadb");
         settings.put(Environment.USER, "root");
         settings.put(Environment.PASS, "root");
-        settings.put(Environment.HBM2DDL_AUTO, "validate");
+        settings.put(Environment.HBM2DDL_AUTO, "create");
         settings.put(Environment.SHOW_SQL, "true");
         settings.put(Environment.STORAGE_ENGINE, "innodb");
+        settings.put(Environment.PHYSICAL_NAMING_STRATEGY, "com.pvt.app.util.CatNamingStrategy");
 
         // Apply settings
         serviceRegistryBuilder.applySettings(settings);
@@ -61,7 +57,10 @@ public class SFEMUtil {
         // Create MetadataSources
         MetadataSources sources = new MetadataSources(serviceRegistry);
         sources.addAnnotatedClass(Cat.class);
-        sources.addAnnotatedClass(VetVisits.class);
+        sources.addAnnotatedClass(Dog.class);
+        sources.addAnnotatedClass(Parrot.class);
+        sources.addAnnotatedClass(Hamster.class);
+        sources.addAnnotatedClass(WhiteRat.class);
 
         // Create Metadata
         Metadata metadata = sources.getMetadataBuilder().build();
