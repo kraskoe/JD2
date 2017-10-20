@@ -22,7 +22,7 @@ import java.util.Date;
 @Embeddable
 public class VetVisit {
     @Column (updatable = false)
-    @CreationTimestamp
+//    @CreationTimestamp
     private Date firstVisit;
     @Column (insertable = false)
     private Date lastVisit;

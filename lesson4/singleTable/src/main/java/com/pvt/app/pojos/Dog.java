@@ -8,7 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -18,25 +17,11 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Entity
-public class Dog {
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    @Column(updatable = false)
-    private Long id;
-
+public class Dog extends EntityDate {
     @Column
-    @Access(AccessType.FIELD)
     private Integer age;
 
     @Column
-    @Access(AccessType.PROPERTY)
     private String name;
-    @CreationTimestamp
-    @Column(updatable = false)
-    private Date firstVetVisit;
-    @UpdateTimestamp
-    @Column(insertable = false)
-    private Date lastVetVisit;
 }
