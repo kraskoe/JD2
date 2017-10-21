@@ -3,6 +3,8 @@ package com.pvt.app.pojos;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Polymorphism;
+import org.hibernate.annotations.PolymorphismType;
 
 import javax.persistence.*;
 
@@ -12,18 +14,15 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
-@DiscriminatorValue("D")
-@AttributeOverrides({
-        @AttributeOverride(name = "name", column = @Column(name = "MONIKER")),
-        @AttributeOverride(name = "age", column = @Column(name = "ANIMAL_AGE"))
-})
+@Table(name = "LESSON4_TPSC_DOG")
+//@Polymorphism(type = PolymorphismType.EXPLICIT)
+@PrimaryKeyJoinColumn(name = "ANIMAL_ID")
 public class Dog extends Animal {
-    @Column(name = "DOG_RUNNING_SPEED")
+    @Column
     private Double speed;
 
-    @Column(name = "DOG_BREED")
+    @Column
     private String breed;
 
     public Dog(Long id, Integer age, String name, Double speed, String breed) {

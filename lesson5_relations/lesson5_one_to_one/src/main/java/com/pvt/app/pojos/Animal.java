@@ -4,22 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Polymorphism;
+import org.hibernate.annotations.PolymorphismType;
 
 import javax.persistence.*;
-
+import java.io.Serializable;
 /**
  * Created by Yauheni Krasko on 20.10.2017.
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Entity
-@Table(name = "LESSON4_ST_ANIMAL")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "ANIMAL_TYPE", discriminatorType = DiscriminatorType.CHAR)
-@DiscriminatorValue("A")
+@Table(name = "LESSON5_OTO_ANIMAL")
 public class Animal {
     @Id
     @GeneratedValue
@@ -29,4 +26,7 @@ public class Animal {
     private Integer age;
     @Column(name = "MONIKER")
     private String name;
+    @OneToOne(mappedBy = "animal", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+//    @OneToOne(mappedBy = "animal", cascade = CascadeType.ALL)
+    private Cat cat;
 }

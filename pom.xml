@@ -11,6 +11,7 @@
     <module>lesson3</module>
     <module>lesson4</module>
       <module>lesson4</module>
+      <module>lesson5_relations</module>
   </modules>
   <packaging>pom</packaging>
 

@@ -7,16 +7,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lesson4</artifactId>
+    <artifactId>lesson5_relations</artifactId>
     <packaging>pom</packaging>
 
-    <name>lesson4</name>
+    <name>lesson5_relations</name>
     <url>http://maven.apache.org</url>
     <modules>
-        <module>mappedSuperClass</module>
-        <module>singleTable</module>
-        <module>tablePerClass</module>
-        <module>tablePerSubclass</module>
+        <module>lesson5_one_to_one</module>
+        <module>lesson5_one_to_many</module>
     </modules>
 
     <properties>

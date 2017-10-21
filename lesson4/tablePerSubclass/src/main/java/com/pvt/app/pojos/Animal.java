@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Polymorphism;
+import org.hibernate.annotations.PolymorphismType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Yauheni Krasko on 20.10.2017.
@@ -16,17 +19,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "LESSON4_ST_ANIMAL")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "ANIMAL_TYPE", discriminatorType = DiscriminatorType.CHAR)
-@DiscriminatorValue("A")
-public class Animal {
+@Table(name = "LESSON4_TPSC_ANIMAL")
+//@Polymorphism(type = PolymorphismType.EXPLICIT)
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Animal implements Serializable {
     @Id
     @GeneratedValue
-    @Column(name = "ANIMAL_ID")
     private Long id;
-    @Column(name = "ANIMAL_AGE")
+    @Column
     private Integer age;
-    @Column(name = "MONIKER")
+    @Column
     private String name;
 }

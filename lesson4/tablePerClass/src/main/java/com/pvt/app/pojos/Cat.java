@@ -12,14 +12,13 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
-@DiscriminatorValue("C")
+@Table(name = "LESSON4_TPC_CAT")
 public class Cat extends Animal {
-    @Column(name = "CAT_JUMPING_HEIGHT")
+    @Column
     private Double jumpHeight;
 
-    @Column(name = "CAT_CATCH_MICE_ABILITY")
+    @Column
     private Boolean canCatchMice;
 
     public Cat(Long id, Integer age, String name, Double height, Boolean catchMice) {

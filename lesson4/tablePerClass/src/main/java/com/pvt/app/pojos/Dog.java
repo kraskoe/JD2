@@ -12,18 +12,13 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
-@DiscriminatorValue("D")
-@AttributeOverrides({
-        @AttributeOverride(name = "name", column = @Column(name = "MONIKER")),
-        @AttributeOverride(name = "age", column = @Column(name = "ANIMAL_AGE"))
-})
+@Table(name = "LESSON4_TPC_DOG")
 public class Dog extends Animal {
-    @Column(name = "DOG_RUNNING_SPEED")
+    @Column
     private Double speed;
 
-    @Column(name = "DOG_BREED")
+    @Column
     private String breed;
 
     public Dog(Long id, Integer age, String name, Double speed, String breed) {
