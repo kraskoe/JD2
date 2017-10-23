@@ -12,7 +12,6 @@ import javax.persistence.EntityManager;
  */
 public class PrepareTest {
     protected static EntityManager em;
-    protected static Session sf;
 
     @BeforeClass
     public static void init() {

@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "LESSON5_ZOO")
+@Table(name = "LESSON5_MTM_ZOO")
 public class Zoo {
     @Id
     @GeneratedValue

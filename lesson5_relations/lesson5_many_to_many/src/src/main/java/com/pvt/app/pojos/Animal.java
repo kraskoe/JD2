@@ -9,6 +9,9 @@ import org.hibernate.annotations.PolymorphismType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Yauheni Krasko on 20.10.2017.
  */
@@ -16,7 +19,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "LESSON5_OTM_ANIMAL")
+@Table(name = "LESSON5_MTM_ANIMAL")
 public class Animal {
     @Id
     @GeneratedValue
@@ -32,4 +35,10 @@ public class Animal {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ZOO_ID")
     private Zoo zoo;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Procedure", joinColumns = {@JoinColumn(name = "ANIMAL_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "PROCEDURE_ID")}
+    )
+    private List<Procedure> procedures = new ArrayList<>();
+
 }
