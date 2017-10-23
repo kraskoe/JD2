@@ -35,10 +35,9 @@ public class Animal {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ZOO_ID")
     private Zoo zoo;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Procedure", joinColumns = {@JoinColumn(name = "ANIMAL_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "PROCEDURE_ID")}
-    )
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "ANIMAL_PROCEDURE", joinColumns = {@JoinColumn(name = "ANIMAL_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "PROCEDURE_ID")})
     private List<Procedure> procedures = new ArrayList<>();
 
 }

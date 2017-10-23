@@ -20,7 +20,7 @@ public class Procedure {
     @GeneratedValue
     @Column(name = "PROCEDURE_ID")
     private Long id;
-    @Column(name = "PROCEDURE")
+    @Column(name = "PROCEDURE_NAME")
     private String name;
 //    @CreationTimestamp
 //    @Column(name = "DATE")

@@ -34,6 +34,4 @@ public class Lesson4MappedSuperClassTest extends PrepareTest {
         em.remove(cat4);
         em.getTransaction().commit();
     }
-
-
 }
