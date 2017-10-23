@@ -29,7 +29,7 @@ public class Animal {
 //    @OneToOne(mappedBy = "animal", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @OneToOne(mappedBy = "animal", cascade = CascadeType.ALL)
     private Cat cat;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ZOO_ID")
     private Zoo zoo;
 }

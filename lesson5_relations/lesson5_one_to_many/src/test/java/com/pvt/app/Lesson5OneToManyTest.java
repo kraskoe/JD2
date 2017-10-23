@@ -94,7 +94,7 @@ public class Lesson5OneToManyTest extends PrepareTest {
 //        zoo4.getAnimals().remove(animal8);
 //        animal8.setZoo(null);
 
-//        zoo4.getAnimals().remove(0);
+        zoo4.getAnimals().remove(0);
 
         em.getTransaction().commit();
     }

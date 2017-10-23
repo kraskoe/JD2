@@ -23,7 +23,7 @@ public class Zoo {
     private Long id;
     @Column(name = "ZOO_NAME")
     private String name;
-    @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Animal> animals = new ArrayList<>();
 
     public Zoo (String name) {
