@@ -8,10 +8,9 @@ import org.hibernate.annotations.Polymorphism;
 import org.hibernate.annotations.PolymorphismType;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
- * Created by Yauheni Krasko on 20.10.2017.
+ * Created by Yauheni Krasko on 08.10.2017.
  */
 
 @Data
@@ -19,15 +18,16 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "LESSON4_TPSC_ANIMAL")
-//@Polymorphism(type = PolymorphismType.EXPLICIT)
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Animal implements Mammal {
+@Polymorphism(type = PolymorphismType.IMPLICIT)
+public class Hamster implements Mammal {
     @Id
     @GeneratedValue
+    @Column(updatable = false)
     private Long id;
+
     @Column
     private Integer age;
+
     @Column
     private String name;
 }

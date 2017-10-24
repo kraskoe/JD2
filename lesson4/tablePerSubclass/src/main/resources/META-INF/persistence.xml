@@ -8,6 +8,8 @@
         <class>com.pvt.app.pojos.Animal</class>
         <class>com.pvt.app.pojos.Cat</class>
         <class>com.pvt.app.pojos.Dog</class>
+        <class>com.pvt.app.pojos.Hamster</class>
+        <class>com.pvt.app.pojos.Parrot</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
