@@ -19,7 +19,8 @@ import javax.persistence.*;
 @Table(name = "LESSON4_TPSC_CAT")
 @Polymorphism(type = PolymorphismType.EXPLICIT)
 @PrimaryKeyJoinColumn(name = "ANIMAL_ID")
-public class Cat extends Animal{
+public class Cat extends Animal {
+//public class Cat extends Animal implements Mammal{
     @Column
     private Double jumpHeight;
 

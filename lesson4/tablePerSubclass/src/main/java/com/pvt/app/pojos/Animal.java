@@ -20,8 +20,9 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Entity
 @Table(name = "LESSON4_TPSC_ANIMAL")
-//@Polymorphism(type = PolymorphismType.EXPLICIT)
+@Polymorphism(type = PolymorphismType.EXPLICIT)
 @Inheritance(strategy = InheritanceType.JOINED)
+//public class Animal {
 public class Animal implements Mammal {
     @Id
     @GeneratedValue

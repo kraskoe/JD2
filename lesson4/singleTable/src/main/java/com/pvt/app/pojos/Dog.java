@@ -15,10 +15,10 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @Entity
 @DiscriminatorValue("D")
-@AttributeOverrides({
-        @AttributeOverride(name = "name", column = @Column(name = "MONIKER")),
-        @AttributeOverride(name = "age", column = @Column(name = "ANIMAL_AGE"))
-})
+//@AttributeOverrides({
+//        @AttributeOverride(name = "name", column = @Column(name = "ANIMAL_MONIKER")),
+//        @AttributeOverride(name = "age", column = @Column(name = "ANIMAL_AGE"))
+//})
 public class Dog extends Animal {
     @Column(name = "DOG_RUNNING_SPEED")
     private Double speed;

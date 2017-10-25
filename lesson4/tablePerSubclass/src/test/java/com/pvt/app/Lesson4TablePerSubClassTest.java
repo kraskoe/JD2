@@ -72,5 +72,4 @@ public class Lesson4TablePerSubClassTest extends PrepareTest {
 
 //        Assert.assertEquals(mammals.size(), 4);
     }
-
 }
