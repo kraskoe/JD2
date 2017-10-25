@@ -12,6 +12,7 @@
     <module>lesson4</module>
       <module>lesson4</module>
       <module>lesson5_relations</module>
+      <module>lesson6_hql_jpql</module>
   </modules>
   <packaging>pom</packaging>
 
