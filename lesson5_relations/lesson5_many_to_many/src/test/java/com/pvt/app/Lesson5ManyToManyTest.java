@@ -72,7 +72,7 @@ public class Lesson5ManyToManyTest extends PrepareTest {
     }
 
     @Test
-    public void deletetest(){
+    public void deleteTest(){
         em.getTransaction().begin();
         Procedure proc3 = new Procedure("banana-eating");
         Animal a7 = new Animal(null, 7, "Animal#7", null, null, new ArrayList<>());

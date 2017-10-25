@@ -9,6 +9,11 @@
         <class>com.pvt.app.pojos.Animal</class>
         <class>com.pvt.app.pojos.Zoo</class>
         <class>com.pvt.app.pojos.Procedure</class>
+        <class>com.pvt.app.entity.User</class>
+        <class>com.pvt.app.entity.Author</class>
+        <class>com.pvt.app.entity.Book</class>
+        <class>com.pvt.app.entity.Article</class>
+        <class>com.pvt.app.entity.Pamphlet</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
