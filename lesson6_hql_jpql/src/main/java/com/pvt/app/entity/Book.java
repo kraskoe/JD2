@@ -10,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "LESSON6_BOOK")
 public class Book {
     @Id
     @GeneratedValue

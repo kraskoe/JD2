@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "LESSON6_AUTHOR")
 public class Author {
     @Id
     @GeneratedValue

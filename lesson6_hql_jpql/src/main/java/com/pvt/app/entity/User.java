@@ -15,12 +15,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "LESSON6_USER")
 public class User {
     @Id
     @GeneratedValue
     private Long id;
     @Column
     private String name;
+    @Column
+    private String surname;
+    @Column
+    private Integer age;
+    @Column
+    private Double height;
 //    @ElementCollection
 //    @CollectionTable(name = "USER_PETS",
 //    joinColumns = @JoinColumn(name = "OWNER_ID"))
