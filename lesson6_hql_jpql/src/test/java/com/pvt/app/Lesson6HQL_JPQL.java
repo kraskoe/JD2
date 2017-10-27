@@ -212,18 +212,18 @@ public class Lesson6HQL_JPQL extends PrepareTest {
         em.getTransaction().commit();
     }
 
-//    @Test
-//    public void insertTest() {
-//        em.getTransaction().begin();
-//        Session session = em.unwrap(Session.class);
-//        Query query = session.createNativeQuery("insert into User(null, u.name, u.surname, u.age, u.height) " +
-//                "select u.name, u.surname, u.age, u.height from User u where u.id = :id");
-//        System.out.println("Number of updated entries: " +
-//                query.setParameter("id", 1L)
-//                        .executeUpdate());
-//        em.getTransaction().commit();
-//    }
-//
+    @Test
+    public void insertSelectTest() {
+        em.getTransaction().begin();
+        Session session = em.unwrap(Session.class);
+        Query query = session.createNativeQuery("insert into lesson6_user(name, surname, age, height) " +
+                "select u.name, u.surname, u.age, u.height from lesson6_user as u where u.id = :id");
+        System.out.println("Number of updated entries: " +
+                query.setParameter("id", 1L)
+                        .executeUpdate());
+        em.getTransaction().commit();
+    }
+
     @Test
     public void updateTest() {
         em.getTransaction().begin();
