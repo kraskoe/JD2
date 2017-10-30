@@ -161,8 +161,6 @@ public class Lesson7Criteria extends PrepareTest {
             int max = (int) s.get(3);
             long sum = (long) s.get(4);
 
-//            !!!  sum возвращает long?
-//            int sum = (int) s.get(4);
             System.out.println("User distinct names count: " + distCount + ", average age: " + avg
                     + ", min age: " + min + ", max age: " + max + ", sum age: " + sum);
         });
