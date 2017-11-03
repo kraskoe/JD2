@@ -50,15 +50,15 @@ public class Lesson8OptimisticJDBCTransactions extends PrepareTest {
         } catch (InterruptedException ie) {
             System.out.println("IE!");
         }
-        em.getTransaction().begin();
-        student.setNumberOfLikes(101);
-        em.getTransaction().commit();
-        System.out.println("-----Version after lockExcluded change: " + student.getVersion());
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException ie) {
-            System.out.println("IE!");
-        }
+//        em.getTransaction().begin();
+//        student.setNumberOfLikes(101);
+//        em.getTransaction().commit();
+//        System.out.println("-----Version after lockExcluded change: " + student.getVersion());
+//        try {
+//            Thread.sleep(100);
+//        } catch (InterruptedException ie) {
+//            System.out.println("IE!");
+//        }
         em.getTransaction().begin();
         student.setHeight(1.9);
         em.getTransaction().commit();
@@ -94,7 +94,6 @@ public class Lesson8OptimisticJDBCTransactions extends PrepareTest {
         System.out.println("-----Version after change: " + student.getVersion());
     }
 
-//    Optimistic lock depends on session/entity manager, not only on threads???                                         !!!
     @Test
     public void optimisticLockVersionTest(){
         em.getTransaction().begin();
@@ -112,7 +111,6 @@ public class Lesson8OptimisticJDBCTransactions extends PrepareTest {
                 Student studentfromDB = entityManager.find(Student.class, student.getId());
                 studentfromDB.setAge(50);
                 entityManager.getTransaction().commit();
-//            em.clear();
                 System.out.println("-----Entity after first change: " + entityManager.find(Student.class, student.getId()));
             }).start();
 

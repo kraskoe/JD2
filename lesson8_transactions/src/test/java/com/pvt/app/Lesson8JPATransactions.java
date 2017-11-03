@@ -144,23 +144,38 @@ public class Lesson8JPATransactions extends PrepareTest {
 //    Don't forget to delete @Version before running the above tests!
     @Test
     public void pessimisticLockPessimisticReadTest(){
-        em.getTransaction().begin();
-        User user = em.find(User.class, 1L, LockModeType.PESSIMISTIC_READ);
-        em.getTransaction().commit();
-        System.out.println("-----Entity after persist: " + user);
+//        em.getTransaction().begin();
+//        User user = em.find(User.class, 1L);
+//        em.getTransaction().commit();
+//        System.out.println("-----Entity after persist: " + user);
 
         try {
             em.getTransaction().begin();
-            em.find(User.class, 1L);
-//            user.setHeight(1.9);
+
+            User user = em.find(User.class, 1L, LockModeType.PESSIMISTIC_READ);
+            System.out.println("-----Entity after persist: " + user);
+            user.setHeight(1.9);
+//            em.flush();
 
             new Thread(() -> {
                 EntityManager entityManager = EMUtil.getEntityManager();
                 entityManager.getTransaction().begin();
-                User userFromDB = entityManager.find(User.class, user.getId(), LockModeType.PESSIMISTIC_READ);
-                userFromDB.setAge(50);
+                User userFromDB = entityManager.find(User.class, user.getId());
                 entityManager.getTransaction().commit();
-                System.out.println("-----Entity after first change: " + entityManager.find(User.class, user.getId()));
+                System.out.println("-----Entity after concurrent reading: " + userFromDB);
+            }).start();
+
+            new Thread(() -> {
+                try {
+                    EntityManager entityManager = EMUtil.getEntityManager();
+                    entityManager.getTransaction().begin();
+                    User userFromDB = entityManager.find(User.class, user.getId());
+                    userFromDB.setAge(50);
+                    entityManager.getTransaction().commit();
+                    System.out.println("-----Entity after first change: " + userFromDB);
+                } catch (Exception re) {
+                    re.printStackTrace();
+                }
             }).start();
 
             try {
@@ -168,45 +183,33 @@ public class Lesson8JPATransactions extends PrepareTest {
             } catch (InterruptedException ie) {
                 System.out.println("IE!");
             }
-
-            new Thread(() -> {
-                EntityManager entityManager = EMUtil.getEntityManager();
-                entityManager.getTransaction().begin();
-                User userFromDB = entityManager.find(User.class, user.getId(), LockModeType.PESSIMISTIC_READ);
-                entityManager.getTransaction().commit();
-                System.out.println("-----Entity after concurrent reading: " + entityManager.find(User.class, user.getId()));
-            }).start();
-
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ie) {
-                System.out.println("IE!");
-            }
+//            user.setName("NewUser");
             em.getTransaction().commit();
-            System.out.println("-----Entity after second change: " + em.find(User.class, user.getId()));
+            System.out.println("-----Entity after second change: " + em.find(User.class, 1L));
         } catch (RollbackException re) {
             re.printStackTrace();
         } finally {
-            System.out.println(em.find(User.class, user.getId()));
+            System.out.println(em.find(User.class, 1L));
         }
     }
 
     @Test
     public void pessimisticLockPessimisticWriteTest(){
         em.getTransaction().begin();
-        User user = em.find(User.class, 1L, LockModeType.PESSIMISTIC_WRITE);
+        User user = em.find(User.class, 1L);
         em.getTransaction().commit();
         System.out.println("-----Entity after persist: " + user);
 
         try {
             em.getTransaction().begin();
-            em.find(User.class, 1L);
+            em.find(User.class, 1L, LockModeType.PESSIMISTIC_WRITE);
             user.setHeight(1.9);
+            em.flush();
 
             new Thread(() -> {
                 EntityManager entityManager = EMUtil.getEntityManager();
                 entityManager.getTransaction().begin();
-                User userFromDB = entityManager.find(User.class, user.getId(), LockModeType.PESSIMISTIC_READ);
+                User userFromDB = entityManager.find(User.class, user.getId());
                 userFromDB.setAge(50);
                 entityManager.getTransaction().commit();
                 System.out.println("-----Entity after first change: " + entityManager.find(User.class, user.getId()));
@@ -221,7 +224,7 @@ public class Lesson8JPATransactions extends PrepareTest {
             new Thread(() -> {
                 EntityManager entityManager = EMUtil.getEntityManager();
                 entityManager.getTransaction().begin();
-                User userFromDB = entityManager.find(User.class, user.getId(), LockModeType.PESSIMISTIC_READ);
+                User userFromDB = entityManager.find(User.class, user.getId());
                 entityManager.getTransaction().commit();
                 System.out.println("-----Entity after concurrent reading: " + entityManager.find(User.class, user.getId()));
             }).start();

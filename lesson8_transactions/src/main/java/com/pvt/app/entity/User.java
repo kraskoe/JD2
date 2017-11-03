@@ -3,6 +3,7 @@ package com.pvt.app.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@DynamicUpdate
 @Table(name = "LESSON8_USER")
 public class User {
     @Id
@@ -28,6 +30,6 @@ public class User {
     private Integer age;
     @Column
     private Double height;
-    @Version
+//    @Version
     private Long version;
 }
