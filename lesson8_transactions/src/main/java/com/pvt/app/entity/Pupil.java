@@ -3,6 +3,8 @@ package com.pvt.app.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.OptimisticLock;
 import org.hibernate.annotations.OptimisticLockType;
 import org.hibernate.annotations.OptimisticLocking;
 
@@ -15,6 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@DynamicUpdate
 @OptimisticLocking(type = OptimisticLockType.DIRTY)
 @Table(name = "LESSON8_STUDENT")
 public class Pupil {
@@ -29,4 +32,6 @@ public class Pupil {
     private Integer age;
     @Column
     private Double height;
+    @OptimisticLock(excluded = true)
+    private Integer numberOfLikes;
 }
