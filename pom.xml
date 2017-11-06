@@ -15,6 +15,7 @@
       <module>lesson6_hql_jpql</module>
       <module>lesson7_criteria</module>
       <module>lesson8_transactions</module>
+      <module>lesson9_cache</module>
   </modules>
   <packaging>pom</packaging>
 
