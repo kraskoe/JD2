@@ -6,6 +6,8 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.jpa.QueryHints;
+import org.hibernate.stat.SecondLevelCacheStatistics;
+import org.hibernate.stat.Statistics;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -56,6 +58,14 @@ public class Lesson9CacheTest extends PrepareTest {
             ie.printStackTrace();
         }
         System.out.println(session.byNaturalId(Author.class).using("code", "lev_tolstoy").load());
+
+        Statistics statistics = session.getSessionFactory().getStatistics();
+        SecondLevelCacheStatistics secondLevelCacheStatistics =
+                statistics.getSecondLevelCacheStatistics( "query.cache.person" );
+        long hitCount = secondLevelCacheStatistics.getHitCount();
+        long missCount = secondLevelCacheStatistics.getMissCount();
+        double hitRatio = (double) hitCount / ( hitCount + missCount );
+        System.out.println(hitCount + " " + missCount + " " + hitRatio);
     }
 
 //    Query cache doesn't work?

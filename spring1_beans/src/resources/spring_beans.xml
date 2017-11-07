@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="performerBean" class="com.pvt.app.beans.PerformerImpl"/>
+    <bean id="aspectBean" class="com.pvt.app.beans.Aspect"/>
+    <bean id="workerBean" class="com.pvt.app.beans.Worker"/>
+    <aop:config>
+        <!--<aop:aspect ref="aspectBean">-->
+            <!--<aop:pointcut id="performerPointCut" expression="execution(* com.pvt.app.beans.Performer.print(..))"/>-->
+            <!--<aop:before method="before" pointcut-ref="performerPointCut"/>-->
+            <!--<aop:after method="after" pointcut-ref="performerPointCut"/>-->
+            <!--<aop:after-throwing method="afterThrowing" pointcut-ref="performerPointCut"/>-->
+            <!--<aop:after-returning method="afterReturning" pointcut-ref="performerPointCut"/>-->
+        <!--</aop:aspect>-->
+        <aop:aspect ref="aspectBean">
+            <aop:pointcut id="performerPointCut" expression="execution(* com.pvt.app.beans.PerformerImpl.print(..))"/>
+            <aop:before method="before" pointcut-ref="performerPointCut"/>
+            <aop:after method="after" pointcut-ref="performerPointCut"/>
+        </aop:aspect>
+        <aop:aspect ref="aspectBean">
+            <aop:pointcut id="workerPointCut" expression="execution(* com.pvt.app.beans.Worker.print(..))"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="workerPointCut"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="workerPointCut"/>
+        </aop:aspect>
+        <aop:aspect ref="aspectBean">
+            <aop:pointcut id="performerAround" expression="execution(* com.pvt.app.beans.PerformerImpl.doSmthElse(..))"/>
+            <aop:around method="around" pointcut-ref="performerAround"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
