@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="simpleFactory" class="com.pvt.app.beans.SimpleFactory" factory-method="getSimpleFactoryWithStaticMethod"/>
+    <bean id="simpleClassFromSimpleFactory" class="com.pvt.app.beans.SimpleClassForConstructor"
+          factory-bean="simpleFactory" factory-method="getInstanceWithOutStaticMethod"/>
+    <bean id="simpleClassBean" class="com.pvt.app.beans.SimpleClassForConstructor" scope="prototype">
+        <constructor-arg index="0" value="Some constructor value"/>
+    </bean>
+    <bean id="someFieldBean" class="com.pvt.app.beans.SomeField" scope="prototype">
+        <property name="someField" value="This is some field"/>
+        <property name="nullField">
+            <null/>
+        </property>
+    </bean>
+    <bean id="somethingBean" class="com.pvt.app.beans.Something" scope="singleton"
+          init-method="init" destroy-method="destroy"
+          p:someName="Name of something" p:someField-ref="someFieldBean">
+        <property name="numbers">
+            <list>
+                <value>12</value>
+                <value>15</value>
+                <value>27</value>
+            </list>
+        </property>
+        <property name="letters">
+            <set>
+                <value>A</value>
+                <value>B</value>
+                <value>C</value>
+            </set>
+        </property>
+        <property name="someMap">
+            <map>
+                <entry key="1" value="first"/>
+                <entry key="2" value="second"/>
+                <entry key="3" value="third"/>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="id">1</prop>
+                <prop key="name">Some name</prop>
+            </props>
+        </property>
+    </bean>
+
+    <util:list id="strings">
+        <bean class="com.pvt.app.beans.SomeField" p:id="1" p:someField="name1" p:nullField="1"/>
+        <bean class="com.pvt.app.beans.SomeField" p:id="2" p:someField="surname1" p:nullField="2"/>
+        <bean class="com.pvt.app.beans.SomeField" p:id="3" p:someField="sname1" p:nullField="3"/>
+        <bean class="com.pvt.app.beans.SomeField" p:id="4" p:someField="name1" p:nullField="4"/>
+        <bean class="com.pvt.app.beans.SomeField" p:id="5" p:someField="surname2" p:nullField="5"/>
+    </util:list>
+
+    <bean id="expressionBean" class="com.pvt.app.beans.ExpressionBean"
+          p:pi="#{T(java.lang.Math).PI}"
+          p:multiplier="#{(T(java.lang.Math).PI/3*expressionBean.count+5)^2}"
+          p:logic="#{expressionBean.count!=null?true:false}"
+          p:elvis="#{expressionBean.count?:9}"
+          p:regexp="#{expressionBean.email matches '[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.by'}"
+          p:name="#{strings[2].someField.toUpperCase()}"
+          p:names="#{strings.?[id gt 2 and someField matches 's[a-zA-Z0-9.%+-]+'].![someField]}"/>
+</beans>
