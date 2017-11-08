@@ -40,7 +40,7 @@ public class Lesson9CacheTest extends PrepareTest {
 
     }
 
-//    Parameter timeTiLiveSeconds doesn't work?
+//    Parameter timeToLiveSeconds doesn't work?
     @Test
     public void cacheEntityTest(){
         Session session = em.unwrap(Session.class);
