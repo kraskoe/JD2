@@ -17,6 +17,7 @@
       <module>lesson8_transactions</module>
       <module>lesson9_cache</module>
       <module>spring1_beans</module>
+      <module>spring2_beans</module>
   </modules>
   <packaging>pom</packaging>
 

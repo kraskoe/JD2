@@ -65,6 +65,6 @@
           p:logic="#{expressionBean.count!=null?true:false}"
           p:elvis="#{expressionBean.count?:9}"
           p:regexp="#{expressionBean.email matches '[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.by'}"
-          p:name="#{strings[2].someField.toUpperCase()}"
+          p:name="#{strings[T(java.lang.Math).random()*strings.size()].someField.toUpperCase()}"
           p:names="#{strings.?[id gt 2 and someField matches 's[a-zA-Z0-9.%+-]+'].![someField]}"/>
 </beans>

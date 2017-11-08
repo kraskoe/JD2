@@ -11,10 +11,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class BeansTest {
 //    Не перехватываются вызовы методов внутри методов???
     @Test
-    public void beanConfigurationTest(){
+    public void beanBeforeAfterTest(){
         ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
         Performer performer = (Performer)context.getBean("performerBean");
         performer.print();
+        ((ClassPathXmlApplicationContext)context).close();
     }
 
     @Test
@@ -22,6 +23,7 @@ public class BeansTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
         Performer worker = (Performer) context.getBean("workerBean");
         worker.print();
+        ((ClassPathXmlApplicationContext)context).close();
     }
 
     @Test
@@ -29,5 +31,6 @@ public class BeansTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
         Performer performer = (Performer)context.getBean("performerBean");
         performer.doSmthElse();
+        ((ClassPathXmlApplicationContext)context).close();
     }
 }

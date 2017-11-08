@@ -7,9 +7,9 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <bean id="performerBean" class="com.pvt.app.beans.PerformerImpl"/>
-    <bean id="aspectBean" class="com.pvt.app.beans.Aspect"/>
-    <bean id="workerBean" class="com.pvt.app.beans.Worker"/>
+    <bean id="performerBean" class="com.pvt.app.beans.PerformerImpl" scope="singleton"/>
+    <bean id="aspectBean" class="com.pvt.app.beans.Aspect" scope="singleton"/>
+    <bean id="workerBean" class="com.pvt.app.beans.Worker" scope="singleton"/>
     <aop:config>
         <!--<aop:aspect ref="aspectBean">-->
             <!--<aop:pointcut id="performerPointCut" expression="execution(* com.pvt.app.beans.Performer.print(..))"/>-->
