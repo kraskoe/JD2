@@ -1,11 +1,9 @@
 package com.pvt.app;
 
-import com.pvt.app.beans.ExpressionBean;
-import com.pvt.app.beans.SimpleClassForConstructor;
-import com.pvt.app.beans.SimpleFactory;
-import com.pvt.app.beans.Something;
+import com.pvt.app.beans.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -44,10 +42,20 @@ public class WiringTest {
         ((ClassPathXmlApplicationContext) context).close();
     }
 
+//    А если несколько бинов связаны с классом?
     @Test
     public void elTest() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
-        ExpressionBean expressionBean = (ExpressionBean) context.getBean("expressionBean");
+        ExpressionBean expressionBean = context.getBean(ExpressionBean.class);
         System.out.println(expressionBean);
+        ((ClassPathXmlApplicationContext) context).close();
+    }
+
+    @Test
+    public void annotationConfigTest(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(BraveKnightConfig.class);
+        Knight knight = context.getBean(Knight.class);
+        knight.embarkOnQuest();
+        ((AnnotationConfigApplicationContext) context).close();
     }
 }
