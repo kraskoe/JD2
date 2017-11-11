@@ -19,6 +19,7 @@
       <module>spring1_beans</module>
       <module>spring2_beans</module>
       <module>spring3_autowiring</module>
+      <module>spring4_annotation_config</module>
   </modules>
   <packaging>pom</packaging>
 
