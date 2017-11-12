@@ -11,13 +11,13 @@
     <bean id="aspectBean" class="com.pvt.app.beans.Aspect" scope="singleton"/>
     <bean id="workerBean" class="com.pvt.app.beans.Worker" scope="singleton"/>
     <aop:config>
-        <!--<aop:aspect ref="aspectBean">-->
-            <!--<aop:pointcut id="performerPointCut" expression="execution(* com.pvt.app.beans.Performer.print(..))"/>-->
-            <!--<aop:before method="before" pointcut-ref="performerPointCut"/>-->
-            <!--<aop:after method="after" pointcut-ref="performerPointCut"/>-->
-            <!--<aop:after-throwing method="afterThrowing" pointcut-ref="performerPointCut"/>-->
-            <!--<aop:after-returning method="afterReturning" pointcut-ref="performerPointCut"/>-->
-        <!--</aop:aspect>-->
+        <proxy<aop:aspect ref="aspectBean">-->
+            <proxy<aop:pointcut id="performerPointCut" expression="execution(* com.pvt.app.beans.Performer.print(..))"/>-->
+            <proxy<aop:before method="before" pointcut-ref="performerPointCut"/>-->
+            <proxy<aop:after method="after" pointcut-ref="performerPointCut"/>-->
+            <proxy<aop:after-throwing method="afterThrowing" pointcut-ref="performerPointCut"/>-->
+            <proxy<aop:after-returning method="afterReturning" pointcut-ref="performerPointCut"/>-->
+        <!proxy/aop:aspect>-->
         <aop:aspect ref="aspectBean">
             <aop:pointcut id="performerPointCut" expression="execution(* com.pvt.app.beans.PerformerImpl.print(..))"/>
             <aop:before method="before" pointcut-ref="performerPointCut"/>

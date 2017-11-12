@@ -20,6 +20,7 @@
       <module>spring2_beans</module>
       <module>spring3_autowiring</module>
       <module>spring4_annotation_config</module>
+      <module>spring5_aop</module>
   </modules>
   <packaging>pom</packaging>
 
