@@ -23,6 +23,7 @@
         <module>spring5_aop</module>
         <module>spring6_hibernate</module>
         <module>spring6_transactions</module>
+        <module>spring7_data</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -176,6 +177,11 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.0.0.RELEASE</version>
         </dependency>
     </dependencies>
 
