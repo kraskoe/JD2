@@ -10,6 +10,7 @@ import javax.inject.Named;
  */
 
 @Data
+//@Component
 public class RammsteinCD implements CompactDisc {
     private String artist = "Rammstein";
     private String title = "Benzin";

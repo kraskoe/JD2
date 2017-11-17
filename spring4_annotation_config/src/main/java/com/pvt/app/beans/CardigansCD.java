@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Data
-//@AutowiredCD
+@AutowiredCD
 //@Component("cardigans")
 public class CardigansCD implements CompactDisc {
     private String artist = "The Cardigans";

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 //@ComponentScan("com.pvt.app.beans")
-@ComponentScan(basePackages = {"com.pvt.app.beans"})
-//@ComponentScan(basePackageClasses = {CardigansCD.class})
+//@ComponentScan(basePackages = {"com.pvt.app.beans"})
+@ComponentScan(basePackageClasses = {CardigansCD.class})
 public class CDPlayerConfig {
 }

@@ -8,10 +8,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-    <bean id="simpleFactory" class="com.pvt.app.beans.SimpleFactory" factory-method="getSimpleFactoryWithStaticMethod"/>
+    <bean id="simpleFactory" class="com.pvt.app.beans.SimpleFactory" factory-method="getSimpleFactoryWithStaticMethod" lazy-init="true"/>
     <bean id="simpleClassFromSimpleFactory" class="com.pvt.app.beans.SimpleClassForConstructor"
-          factory-bean="simpleFactory" factory-method="getInstanceWithOutStaticMethod"/>
-    <bean id="simpleClassBean" class="com.pvt.app.beans.SimpleClassForConstructor" scope="prototype">
+          factory-bean="simpleFactory" factory-method="getInstanceWithOutStaticMethod" lazy-init="true"/>
+    <bean id="simpleClassBean" class="com.pvt.app.beans.SimpleClassForConstructor" scope="prototype" lazy-init="true">
         <constructor-arg index="0" value="Some constructor value"/>
     </bean>
     <bean id="someFieldBean" class="com.pvt.app.beans.SomeField" scope="prototype">
@@ -21,7 +21,7 @@
         </property>
     </bean>
     <bean id="somethingBean" class="com.pvt.app.beans.Something" scope="singleton"
-          init-method="init" destroy-method="destroy"
+          init-method="init" destroy-method="destroy" lazy-init="true"
           p:someName="Name of something" p:someField-ref="someFieldBean">
         <property name="numbers">
             <list>
